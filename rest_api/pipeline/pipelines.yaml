@@ -4,7 +4,8 @@ components:    # define all the building-blocks for Pipeline
   - name: ElasticsearchDocumentStore
     type: ElasticsearchDocumentStore
     params:
-      host: localhost
+      host: 10.128.0.22
+      port: 9200
   - name: ESRetriever
     type: ElasticsearchRetriever
     params:

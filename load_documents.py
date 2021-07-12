@@ -45,7 +45,7 @@ documents = pull_documents(
 )
 
 document_store = ElasticsearchDocumentStore(
-    host="localhost", username="", password="", index="document"
+    host="10.128.0.22", port=9200, username="", password="", index="document"
 )
 
 # Delete existing documents in documents store

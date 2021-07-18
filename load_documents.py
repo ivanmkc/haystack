@@ -38,7 +38,7 @@ def pull_documents(spreadsheet_name, worksheet_name) -> List[Document]:
 
 
 SPREADSHEET_NAME = "QuestionAnswerCorpus"
-WORKSHEET_NAME = "Sheet1"
+WORKSHEET_NAME = "Visitor's Center"
 
 documents = pull_documents(
     spreadsheet_name=SPREADSHEET_NAME, worksheet_name=WORKSHEET_NAME

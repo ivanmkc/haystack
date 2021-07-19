@@ -18,6 +18,12 @@
             "module": "load_documents",
         },
         {
+            "name": "Cloud Build: Build haystack",
+            "request": "launch",
+            "command": "gcloud builds submit --config=docker/cloud-build.yaml --timeout=3600",
+            "type": "node-terminal",
+        },
+        {
             "name": "Start local server (gunicorn)",
             "type": "python",
             "request": "launch",

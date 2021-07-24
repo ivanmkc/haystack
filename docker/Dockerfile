@@ -30,7 +30,11 @@ COPY rest_api /home/user/rest_api
 # optional: copy data directory containing docs for ingestion
 #COPY data /home/user/data
 
-EXPOSE 8000
+# The bootstrap script will download the model file into the container image
+COPY ./bootstrap.py .
+RUN python bootstrap.py
+
+EXPOSE 8080
 
 # cmd for running the API
-CMD ["gunicorn", "rest_api.application:app",  "-b", "0.0.0.0", "-k", "uvicorn.workers.UvicornWorker", "--workers", "1", "--timeout", "180"]
+CMD ["gunicorn", "rest_api.application:app",  "-b", "0.0.0.0:8080", "-k", "uvicorn.workers.UvicornWorker", "--workers", "1", "--timeout", "180"]

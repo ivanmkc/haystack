@@ -151,5 +151,6 @@ tutorials/model
 models
 saved_models
 *_build
+bootstrap_model
 
 .DS_Store

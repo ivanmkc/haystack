@@ -12,6 +12,12 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "Bootstrap",
+            "type": "python",
+            "request": "launch",
+            "module": "bootstrap",
+        },
+        {
             "name": "Load documents from GSheets",
             "type": "python",
             "request": "launch",
@@ -22,6 +28,18 @@
             "request": "launch",
             "command": "gcloud builds submit --config=docker/cloud-build.yaml --timeout=3600",
             "type": "node-terminal",
+        },
+        {
+            "name": "Cloud Run: Deploy haystack",
+            "request": "launch",
+            "command": "gcloud run deploy haystack --image=gcr.io/chatbot-299615/haystack --platform=managed --cpu=2 --memory=4G --port=8080 --region=us-central1 --update-env-vars ELASTICSEARCHDOCUMENTSTORE_PARAMS_HOST=${env:ELASTICSEARCHDOCUMENTSTORE_PARAMS_HOST},ELASTICSEARCHDOCUMENTSTORE_PARAMS_PORT=${env:ELASTICSEARCHDOCUMENTSTORE_PARAMS_PORT} --vpc-connector=${env:VPC_CONNECTOR}",
+            "type": "node-terminal",
+        },
+        {
+            "name": "Docker: Run haystack",
+            "request": "launch",
+            "command": "docker run -d -p 8080:8080 --env-file docker/.env.list gcr.io/chatbot-299615/haystack",
+            "type": "node-terminal"
         },
         {
             "name": "Start local server (gunicorn)",
